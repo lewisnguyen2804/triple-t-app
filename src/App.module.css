@@ -8,3 +8,22 @@
   top: 0;
   left: 0; 
 }
+
+/* Link style */
+a:link {
+  text-decoration: none;
+  color: #0099cc;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #0099cc;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
