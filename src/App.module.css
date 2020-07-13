@@ -1,0 +1,30 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+  top: 0;
+  left: 0; 
+  background: #76b7fb;
+}
+
+/* Link style */
+a:link {
+  text-decoration: none;
+  color: #0099cc;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #0099cc;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}

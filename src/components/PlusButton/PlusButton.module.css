@@ -1,0 +1,32 @@
+.buttonWrapper {
+    height: 100px;
+    width: 100px;
+}
+
+.PlusButton {
+    margin: 1rem;
+    padding: 2rem;
+    border-radius: 100%;
+    position: relative;
+    background-color: #76b7fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PlusButton::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 2rem;
+    background-color: #ffffff;
+    transform: rotate(90Deg) 
+}
+
+.PlusButton::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 2rem;
+    background-color: #ffffff;
+}
