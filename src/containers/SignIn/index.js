@@ -11,10 +11,10 @@ export default function SignIn() {
       <h1 className={classes.signIn}>Sign in</h1>
 
       <form className={classes.info_Form}>
-        <label>Your email:</label>
+        <label className={classes.emailName}>Your email:</label>
         <input className={classes.email_ID} type="email" placeholder="Email..."/>
 
-        <label>Your pasword:</label>
+        <label className={classes.emailPassword}>Your pasword:</label>
         <input className={classes.email_password} type="password" placeholder="Password"/>
 
         <a className={classes.forgot_password} href="#forget">Forgot Password?</a>
@@ -23,13 +23,13 @@ export default function SignIn() {
 
         <div className={classes.icon}>
             <div className={classes.fb}>
-            <FontAwesomeIcon icon={faFacebookF} />
+            <FontAwesomeIcon icon={faFacebookF} className={classes.icon_link}/>
             </div>
             <div className={classes.twiter}>
-            <FontAwesomeIcon icon={faTwitter} />
+            <FontAwesomeIcon icon={faTwitter} className={classes.icon_link}/>
             </div>
             <div className={classes.gg}>
-            <FontAwesomeIcon icon={faGooglePlusG} />
+            <FontAwesomeIcon icon={faGooglePlusG} className={classes.icon_link}/>
             </div>
         </div>
        
