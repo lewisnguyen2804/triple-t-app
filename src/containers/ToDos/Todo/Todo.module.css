@@ -1,0 +1,22 @@
+.Todo {
+    padding: 0 .5rem;
+    margin: 1rem ;
+    border: none;
+    border-radius: 5px;
+    box-shadow:3px 5px 5px 5px #d3d3d3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Icon {
+    color: #76b7fb;
+}
+
+.Hide {
+    opacity: 0 
+}
+
+.Delete {
+    color: #d3d3d3;
+}
