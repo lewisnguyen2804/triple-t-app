@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './App.module.css';
 import SignIn from "./containers/SignIn";
 import SignUp from "./containers/SignUp";
-import ToDo from "./containers/ToDo";
+import ToDos from "./containers/ToDos";
 
 import {
   BrowserRouter as Router,
@@ -12,20 +12,20 @@ import {
 
 function App() {
   return (
-    <div>
+    <div className={classes.App}>
       <Router>
         <Switch>
-          <Route exact path="/">
-            <SignIn />
-          </Route>
           <Route path="/signup">
             <SignUp />
           </Route>
           <Route path="/signin">
             <SignIn />
           </Route>
-          <Route path="/toto">
-            <ToDo />
+          <Route path="/totos">
+            <ToDos/>
+          </Route>
+          <Route exact path="/">
+            <SignIn />
           </Route>
         </Switch>
       </Router>
