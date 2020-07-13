@@ -32,7 +32,8 @@ export default function SignIn() {
             <FontAwesomeIcon icon={faGooglePlusG} className={classes.icon_link}/>
             </div>
         </div>
-       
+
+        <p className={classes.signUp}>Have not an account? <a href="/signup">SignUp</a></p>
       </form>
     </div>
   );
