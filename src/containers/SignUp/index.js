@@ -18,10 +18,10 @@ export default class SignUp extends Component {
                         </div>
                         
                         <div className={classes.buttonArea}>
-                            <button className={classes.signUpButton}>Sign Up</button>
+                            <button type="submit" className={classes.signUpButton}>Sign Up</button>
                             <div>
-                                Have an account?
-                                <a href="/signin">Login</a>
+                                Have an account? 
+                                <a href="/signin"> Login</a>
                             </div>
                         </div>
                     </form>
