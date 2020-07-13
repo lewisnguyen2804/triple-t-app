@@ -5,6 +5,13 @@ import TodoList from "./TodoList"
 import AddTodoPopup from "./AddTodoPopup"
 
 export default class ToDos extends Component {
+    constructor(props){
+        super(props)
+        this.toggleTodoStatus = this.toggleTodoStatus.bind(this)
+        this.deleteTodo = this.deleteTodo.bind(this)
+        this.addTodo = this.addTodo.bind(this)
+        this.popupHandler = this.popupHandler.bind(this)
+    }
     state = {
         todos: [
             {id: 0,title: "Test dodo", isDone: false}
@@ -14,7 +21,7 @@ export default class ToDos extends Component {
 
     toggleTodoStatus(selectedID) {
         // Find selected todo
-        const selectedTodoIndex = this.state.todos.findIndex(todo => todo.id = selectedID)
+        const selectedTodoIndex = this.state.todos.findIndex(todo => todo.id === selectedID)
         const newTodos =[...this.state.todos] 
         newTodos[selectedTodoIndex].isDone = !newTodos[selectedTodoIndex].isDone
 
@@ -25,16 +32,13 @@ export default class ToDos extends Component {
 
     deleteTodo(selectedID) {
         const newTodos = [...this.state.todos]
-        newTodos.filter(todo => todo.id !== selectedID)
-        this.setState({
-            todos: newTodos
-        })
+        this.setState({todos: newTodos.filter(todo => todo.id !== selectedID)})
     }
 
     addTodo(title) {
         const newTodo = {
             // newID = lasted todo's ID + 1
-            id: this.state.todos[this.state.todos.length - 1].id + 1,
+            id: this.state.todos.length ? this.state.todos[this.state.todos.length - 1].id + 1 : 0,
             title : title,
             isDone: false
         }
@@ -58,8 +62,8 @@ export default class ToDos extends Component {
             <div className={classes.Todos}>
                <h1>All Todo</h1>
                <TodoList todos={this.state.todos} toggleTodoStatus={this.toggleTodoStatus} deleteTodo={this.deleteTodo}/>
-               <AddTodoPopup popupStatus={this.state.popup} addTodo={(title)=>this.addTodo(title)}/>
-               <PlusButton clickHandler={()=> this.popupHandler()}/>
+               <AddTodoPopup popupStatus={this.state.popup} addTodo={this.addTodo}/>
+               <PlusButton clickHandler={this.popupHandler}/>
             </div>
         )
     }
