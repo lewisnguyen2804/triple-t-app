@@ -1,0 +1,28 @@
+.AddTodoPopup {
+    background-color: #76b7fb;
+    height: 30vh;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.Button {
+    margin-top: 1rem;
+    padding: .5rem 2rem;
+    color:#76b7fb ;
+    border: none;
+    border-radius: 10px;
+}
+
+.AddTodoField {
+    border: none;
+    border-radius: 5px;
+    padding: .5rem;
+}
+
+.AddTodoField:focus {
+    outline: none;
+}
