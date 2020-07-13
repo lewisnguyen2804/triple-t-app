@@ -1,4 +1,111 @@
-.Button {
-    padding: 1rem;
-    margin: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+.signIn_Form{
+    width: 500px;
+    height: 80vh;
+
+    margin: 20px auto;
+    padding: 40px;
+
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.signIn{
+    text-align: center;
+}
+
+.info_Form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.emailName, .emailPassword{
+    color: #4e4e4ed9;
+    font-weight: 500;
+}
+
+.email_ID,.email_password{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px 10px 10px 0;
+    transition: all .3s ease-out;
+}
+
+.email_ID:focus, .email_password:focus{
+    border-bottom: 1px solid #1692f4;
+
+}
+
+.forgot_password{
+    text-align: right;
+    text-decoration: none;
+    margin-bottom: 20px;
+    color: #1692f4;
+}
+
+.btn_signIn{
+    width: 100%;
+    height: 40px;
+
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-image: linear-gradient(to right, #41b5ee, #33a2e3, #2c8fd8, #2e7cca, #3568bb);
+    margin: 40px auto;
+}
+
+.register{
+    text-align: center;
+}
+
+.icon{
+    width: 100%;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.fb, .twiter, .gg{
+    width: 80px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+
+    -webkit-box-shadow: 0px 3px 10px -2px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 3px 10px -2px rgba(0,0,0,0.75);
+box-shadow: 0px 3px 10px -2px rgba(0,0,0,0.75);
+}
+
+.icon_link{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #1692f4;
+}
+
+.signUp{
+    text-align: right;
+    font-weight: bold;
+    margin-top: 50px;
+    color: #4e4e4ed9;
+}
+
+.signUp a{
+    color: #1692f4;
+    text-decoration: none;
 }
