@@ -14,7 +14,7 @@ export default class SignUp extends Component {
                         <input type="email" placeholder="Your email" className={classes.inputBox} />
                         <input type="password" placeholder="Your password" className={classes.inputBox}/>
                         <div className={classes.agreeTerms}>
-                            <input type="checkbox" /> Agree to the <a href="#">Terms and Conditions</a>
+                            <input type="checkbox" /> Agree to the <a href="#terms">Terms and Conditions</a>
                         </div>
                         
                         <div className={classes.buttonArea}>
@@ -27,17 +27,15 @@ export default class SignUp extends Component {
                     </form>
                     </div>
                     <div className={classes.socialLoginArea}>
-                        {/* <div className={classes.socialIcons}> */}
-                            <a href="#">
-                                <img className={classes.socialIcon} src={require('../../assets/facebook.png')} />
-                            </a>
-                            <a href="#">
-                                <img className={classes.socialIcon} src={require('../../assets/twitter.png')} />
-                            </a>
-                            <a href="#">
-                                <img className={classes.socialIcon} src={require('../../assets/youtube.png')} />
-                            </a>
-                        {/* </div> */}
+                        <a href="#facebook-login">
+                            <img className={classes.socialIcon} alt="facebook-login-icon" src={require('../../assets/facebook.png')} />
+                        </a>
+                        <a href="#twitter-login">
+                            <img className={classes.socialIcon} alt="twitter-login-icon" src={require('../../assets/twitter.png')} />
+                        </a>
+                        <a href="#youtube-login">
+                            <img className={classes.socialIcon} alt="youtube-login-icon" src={require('../../assets/youtube.png')} />
+                        </a>
                     </div>
                 </div>
             </div>

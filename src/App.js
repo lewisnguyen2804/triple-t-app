@@ -1,6 +1,5 @@
 import React from 'react';
 import './components/FontawesomeIcons';
-import logo from './logo.svg';
 import './App.css';
 import classes from './App.module.css';
 import SignIn from "./containers/SignIn";
