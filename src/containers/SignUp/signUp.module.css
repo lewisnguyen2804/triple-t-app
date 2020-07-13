@@ -26,7 +26,7 @@
 }
 .titleText {
     text-align: center;
-    color: rgb(204, 70, 204);
+    color: #c44dff;
     margin-bottom: 20px;
 }
 .inputBox {
@@ -58,7 +58,9 @@
     border-radius: 20px;
     border: none;
     padding: 10px 40px;
-    background-color: rgb(204, 70, 204);
+    background-color: #c44dff;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .socialLoginArea {

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import classes from "./signUp.module.css"
+import React, { Component } from 'react';
+import classes from "./signUp.module.css";
 
 export default class SignUp extends Component {
     render() {
@@ -21,7 +21,7 @@ export default class SignUp extends Component {
                             <button className={classes.signUpButton}>Sign Up</button>
                             <div>
                                 Have an account?
-                                <a href="#">Login</a>
+                                <a href="/signin">Login</a>
                             </div>
                         </div>
                     </form>
