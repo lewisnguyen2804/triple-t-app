@@ -1,5 +1,7 @@
 import React from "react";
 import classes from "./signIn.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebookF, faTwitter, faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 
 
 export default function SignIn() {
@@ -17,8 +19,20 @@ export default function SignIn() {
 
         <a className={classes.forgot_password} href="#forget">Forgot Password?</a>
         <button className={classes.btn_signIn}>SIGN IN</button>
-        <label>or Sign in with:</label>
+        <label className={classes.register}>or Sign in with:</label>
 
+        <div className={classes.icon}>
+            <div className={classes.fb}>
+            <FontAwesomeIcon icon={faFacebookF} />
+            </div>
+            <div className={classes.twiter}>
+            <FontAwesomeIcon icon={faTwitter} />
+            </div>
+            <div className={classes.gg}>
+            <FontAwesomeIcon icon={faGooglePlusG} />
+            </div>
+        </div>
+       
       </form>
     </div>
   );

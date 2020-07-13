@@ -1,9 +1,11 @@
 
 .signIn_Form{
     width: 600px;
-    height: 50vh;
-    margin: 100px auto;
+    height: 80vh;
+
+    margin: 20px auto;
     padding: 40px;
+
     border: 1px solid #ccc;
 }
 
@@ -39,7 +41,22 @@
     border: none;
     outline: none;
     cursor: pointer;
-
-
+    background-image: linear-gradient(to right ,#41b5ee, #3568bb);
     margin: 40px auto;
+}
+
+.register{
+    text-align: center;
+}
+
+.icon{
+    width: 100%;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.fb, .twiter, .gg{
+    width: 30px;
+    height: 30px;
 }
