@@ -10,9 +10,9 @@ export default class SignUp extends Component {
     constructor() {
         super();
         this.state = {
-          error: null,
-          email: '',
-          password: '',
+            error: null,
+            email: '',
+            password: '',
         };
     }
 
@@ -21,19 +21,19 @@ export default class SignUp extends Component {
             [event.target.name]: event.target.value
         });
     }
-    
+
     handleSubmit = async (event) => {
         event.preventDefault();
         this.setState({ error: '' });
         try {
-          await signup(this.state.email, this.state.password);
-          console.log("Sign up successful!");
+            await signup(this.state.email, this.state.password);
+            console.log("Sign up successful!");
         } catch (error) {
-          this.setState({ error: error.message });
-          console.log("Sign up failed!");
+            this.setState({ error: error.message });
+            console.log("Sign up failed!");
         }
     }
-    
+
     render() {
         return (
             <div className={classes.container}>
@@ -43,23 +43,23 @@ export default class SignUp extends Component {
                             Sign Up
                         </h1>
                         <form onSubmit={this.handleSubmit}>
-                            <input type="email" placeholder="Your email" 
+                            <input type="email" placeholder="Your email"
                                 onChange={this.handleChange}
                                 name="email"
                                 className={classes.inputBox} />
                             <input type="password" placeholder="Your password"
-                                onChange={this.handleChange} 
+                                onChange={this.handleChange}
                                 name="password"
-                                className={classes.inputBox}/>
+                                className={classes.inputBox} />
                             <div className={classes.agreeTerms}>
                                 <input type="checkbox" /> Agree to the <Link to="#terms">Terms and Conditions</Link>
                             </div>
-                            
+
                             <div className={classes.buttonArea}>
                                 <button type="submit"
                                     className={classes.signUpButton}>Sign Up</button>
                                 <div>
-                                    Have an account? 
+                                    Have an account?
                                     <Link to="/signin"> Sign in</Link>
                                 </div>
                             </div>
