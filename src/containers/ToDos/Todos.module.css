@@ -1,0 +1,11 @@
+.Todos {
+    width: 500px;
+    height: 80vh;
+    background-color: #ffffff;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+}

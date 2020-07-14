@@ -100,5 +100,16 @@ box-shadow: 0px 3px 10px -2px rgba(0,0,0,0.75);
 
 .signUp{
     text-align: right;
+<<<<<<< HEAD
     margin-top: 50px;
+=======
+    font-weight: bold;
+    margin-top: 50px;
+    color: #4e4e4ed9;
+}
+
+.signUp a{
+    color: #1692f4;
+    text-decoration: none;
+>>>>>>> e092c710d4b7d50079238d536879c5dc65727220
 }
