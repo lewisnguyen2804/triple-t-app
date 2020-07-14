@@ -5,6 +5,7 @@ import classes from './App.module.css';
 import SignIn from "./containers/SignIn";
 import SignUp from "./containers/SignUp";
 import ToDos from "./containers/ToDos";
+import Error from "./containers/Error"
 
 import { auth } from "./services/firebase";
 
@@ -81,32 +82,34 @@ class App extends Component {
 				<span>Loading...</span>
 			</div>
 		) : (
-				<Router>
-					<Switch>
-						<PublicRoute
-							exact
-							path="/"
-							authenticated={this.state.authenticated}
-							component={SignIn}
-						/>
-						<PrivateRoute
-							path="/todos"
-							authenticated={this.state.authenticated}
-							component={ToDos}
-						/>
-						<PublicRoute
-							path="/signup"
-							authenticated={this.state.authenticated}
-							component={SignUp}
-						/>
-						<PublicRoute
-							path="/signin"
-							authenticated={this.state.authenticated}
-							component={SignIn}
-						/>
-					</Switch>
-				</Router>
-			);
+			<Router>
+				<Switch>
+					<PublicRoute
+						exact
+						path="/"
+						authenticated={this.state.authenticated}
+						component={SignIn}
+					/>
+					<PrivateRoute
+						path="/todos"
+						authenticated={this.state.authenticated}
+						component={ToDos}
+					/>
+					<PublicRoute
+						path="/signup"
+						authenticated={this.state.authenticated}
+						component={SignUp}
+					/>
+					<PublicRoute
+						path="/signin"
+						authenticated={this.state.authenticated}
+						component={SignIn}
+					/>
+					<PublicRoute 
+						component={Error} />
+				</Switch>
+			</Router>
+		);
 	}
 }
 
