@@ -32,8 +32,8 @@ export default class SignUp extends Component {
             this.setState({ error: 'Please fill the inputs' });
             this.setState({ show: true });
         }
-        else 
-        if (this.state.termsAgreeCheck) {
+        else if (this.state.termsAgreeCheck) {
+            this.props.loaderHandler();
             try {
                 await signup(this.state.email, this.state.password);
             } catch (error) {
