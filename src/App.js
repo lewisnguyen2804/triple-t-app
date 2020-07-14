@@ -9,8 +9,9 @@ import Error from "./containers/Error"
 
 import { auth } from "./services/firebase";
 
-import {Switch} from "react-router-dom";
-import {PublicRoute, PrivateRoute} from "./hoc"
+import { Switch } from "react-router-dom";
+import { PublicRoute, PrivateRoute } from "./hoc";
+import { Route } from 'react-router-dom';
 
 class App extends Component {
 	constructor(props) {
@@ -37,41 +38,43 @@ class App extends Component {
 		});
 	}
 
-  
+
 	render() {
-    const loadingScreen = this.state.loading ? <div role="status"><span>Loading...</span></div> : null
-	
+		const loadingScreen = this.state.loading ? <div role="status"><span>Loading...</span></div> : null
 		return (
-      <div className={classes.App}>
-        {loadingScreen}
+			<div className={classes.App}>
+				{loadingScreen}
 				<Switch>
+					<PrivateRoute
+						exact
+						path="/todos"
+						authenticated={this.state.authenticated}
+						component={ToDos}
+					/>
+					<PublicRoute
+						exact
+						path="/signup"
+						authenticated={this.state.authenticated}
+						component={SignUp}
+					/>
+					<PublicRoute
+						exact
+						path="/signin"
+						authenticated={this.state.authenticated}
+						component={SignIn}
+					/>
 					<PublicRoute
 						exact
 						path="/"
 						authenticated={this.state.authenticated}
 						component={SignIn}
 					/>
-					<PrivateRoute
-						path="/todos"
-						authenticated={this.state.authenticated}
-						component={ToDos}
-					/>
-					<PublicRoute
-						path="/signup"
-						authenticated={this.state.authenticated}
-						component={SignUp}
-					/>
-					<PublicRoute
-						path="/signin"
-						authenticated={this.state.authenticated}
-						component={SignIn}
-					/>
-					<PublicRoute 
+					<Route
 						component={Error} />
 				</Switch>
-    </div>
-    )
-  };
+			</div>
+		)
+	};
 }
 
 export default App

@@ -3,8 +3,8 @@ import classes from "./Todos.module.css"
 import PlusButton from "../../components/PlusButton"
 import TodoList from "./TodoList"
 import AddTodoPopup from "./AddTodoPopup"
+import UserLogged from './UserLogged'
 import { auth } from "../../services/firebase"
-import { logout } from "../../helpers/auth"
 
 export default class ToDos extends Component {
     constructor(props) {
@@ -67,10 +67,7 @@ export default class ToDos extends Component {
                 <TodoList todos={this.state.todos} toggleTodoStatus={this.toggleTodoStatus} deleteTodo={this.deleteTodo} />
                 <AddTodoPopup popupStatus={this.state.popup} addTodo={this.addTodo} />
                 <PlusButton clickHandler={this.popupHandler} />
-                <div>
-                    Login in as: <strong>{this.state.user.email}</strong> <br />
-                    <button onClick={logout}>LOGOUT</button>
-                </div>
+                <UserLogged user={this.state.user} />
             </div>
         )
     }
