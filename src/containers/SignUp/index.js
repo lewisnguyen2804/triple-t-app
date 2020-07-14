@@ -33,6 +33,7 @@ export default class SignUp extends Component {
             this.setState({ show: true });
         }
         else if (this.state.termsAgreeCheck) {
+            this.props.loaderHandler();
             try {
                 await signup(this.state.email, this.state.password);
                 console.log("Sign up successful!");
