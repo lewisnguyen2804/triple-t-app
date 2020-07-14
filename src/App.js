@@ -84,24 +84,22 @@ class App extends Component {
 				<Router>
 					<Switch>
 						<PublicRoute
+							exact
 							path="/"
 							authenticated={this.state.authenticated}
 							component={SignIn}
 						/>
 						<PrivateRoute
-							exact
 							path="/todos"
 							authenticated={this.state.authenticated}
 							component={ToDos}
 						/>
 						<PublicRoute
-							exact
 							path="/signup"
 							authenticated={this.state.authenticated}
 							component={SignUp}
 						/>
 						<PublicRoute
-							exact
 							path="/signin"
 							authenticated={this.state.authenticated}
 							component={SignIn}
