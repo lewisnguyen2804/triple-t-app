@@ -9,8 +9,9 @@ import Error from "./containers/Error"
 
 import { auth } from "./services/firebase";
 
-import {Switch} from "react-router-dom";
-import {PublicRoute, PrivateRoute} from "./hoc"
+import { Switch } from "react-router-dom";
+import { PublicRoute, PrivateRoute } from "./hoc";
+import { Route } from 'react-router-dom';
 
 class App extends Component {
 	constructor(props) {
@@ -46,10 +47,9 @@ class App extends Component {
   
 	render() {
     const loadingScreen = this.state.loading ? <div className={classes.LoadingWrapper} role="status"><div className={classes.Loading}></div></div> : null
-	
 		return (
-      <div className={classes.App}>
-        {loadingScreen}
+			<div className={classes.App}>
+				{loadingScreen}
 				<Switch>
 					<PublicRoute
 						exact
@@ -59,27 +59,36 @@ class App extends Component {
 						component={SignIn}
 					/>
 					<PrivateRoute
+						exact
 						path="/todos"
 						authenticated={this.state.authenticated}
 						component={ToDos}
 					/>
 					<PublicRoute
+						exact
 						path="/signup"
 						authenticated={this.state.authenticated}
 						component={SignUp}
 					/>
 					<PublicRoute
+						exact
 						path="/signin"
             authenticated={this.state.authenticated}
             onSigninLoadingHandler={this.onSigninLoadingHandler}
 						component={SignIn}
 					/>
-					<PublicRoute 
+					<PublicRoute
+						exact
+						path="/"
+						authenticated={this.state.authenticated}
+						component={SignIn}
+					/>
+					<Route
 						component={Error} />
 				</Switch>
-    </div>
-    )
-  };
+			</div>
+		)
+	};
 }
 
 export default App
