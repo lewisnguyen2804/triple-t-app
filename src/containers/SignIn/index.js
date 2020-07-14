@@ -27,6 +27,7 @@ export default class SignIn extends Component {
 	handleSubmit = async (event) => {
 		event.preventDefault();
 		this.setState({ error: '' });
+		this.props.onSigninLoadingHandler()
 		try {
 			await signin(this.state.email, this.state.password);
 			console.log("Sign in successful!");
