@@ -9,45 +9,8 @@ import Error from "./containers/Error"
 
 import { auth } from "./services/firebase";
 
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Redirect
-} from "react-router-dom";
-
-function PrivateRoute({ component: Component, authenticated, ...rest }) {
-	return (
-		<Route
-			{...rest}
-			render={props =>
-				authenticated === true ? (
-					<Component {...props} />
-				) : (
-						<Redirect
-							to={{ pathname: "/signin", state: { from: props.location } }}
-						/>
-					)
-			}
-		/>
-	);
-}
-
-
-function PublicRoute({ component: Component, authenticated, ...rest }) {
-	return (
-		<Route
-			{...rest}
-			render={props =>
-				authenticated === false ? (
-					<Component {...props} />
-				) : (
-						<Redirect to="/todos" />
-					)
-			}
-		/>
-	);
-}
+import {Switch} from "react-router-dom";
+import {PublicRoute, PrivateRoute} from "./hoc"
 
 class App extends Component {
 	constructor(props) {
@@ -74,15 +37,13 @@ class App extends Component {
 		});
 	}
 
-
-
+  
 	render() {
-		return this.state.loading === true ? (
-			<div role="status">
-				<span>Loading...</span>
-			</div>
-		) : (
-			<Router>
+    const loadingScreen = this.state.loading ? <div role="status"><span>Loading...</span></div> : null
+	
+		return (
+      <div className={classes.App}>
+        {loadingScreen}
 				<Switch>
 					<PublicRoute
 						exact
@@ -108,9 +69,9 @@ class App extends Component {
 					<PublicRoute 
 						component={Error} />
 				</Switch>
-			</Router>
-		);
-	}
+    </div>
+    )
+  };
 }
 
-export default App;
+export default App
