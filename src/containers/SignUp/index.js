@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 
 export default class SignUp extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             error: null,
             email: '',
@@ -28,7 +28,7 @@ export default class SignUp extends Component {
         this.setState({ show: false });
         event.preventDefault();
         this.setState({ error: '' });
-        if (this.state.email == '' || this.state.password == '') {
+        if (this.state.email === '' || this.state.password === '') {
             this.setState({ error: 'Please fill the inputs' });
             this.setState({ show: true });
         }
@@ -36,11 +36,9 @@ export default class SignUp extends Component {
             this.props.loaderHandler();
             try {
                 await signup(this.state.email, this.state.password);
-                console.log("Sign up successful!");
             } catch (error) {
                 this.setState({ show: true });
                 this.setState({ error: error.message });
-                console.log("Sign up failed!");
             }
         }
         else {

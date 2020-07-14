@@ -5,6 +5,8 @@ import TodoList from "./TodoList"
 import AddTodoPopup from "./AddTodoPopup"
 import UserLogged from './UserLogged'
 import { auth } from "../../services/firebase"
+import Axios from 'axios'
+import { db } from "../../services/firebase"
 
 export default class ToDos extends Component {
     constructor(props) {
@@ -16,7 +18,7 @@ export default class ToDos extends Component {
     }
     state = {
         todos: [
-            { id: 0, title: "Test dodo", isDone: false }
+            { id: 0, title: "Test dodo", from: "a@gmail.com", isDone: false }
         ],
         popup: false,
         user: auth().currentUser,
@@ -41,7 +43,9 @@ export default class ToDos extends Component {
     addTodo(title) {
         const newTodo = {
             // newID = lasted todo's ID + 1
-            id: this.state.todos.length ? this.state.todos[this.state.todos.length - 1].id + 1 : 0,
+            // id: this.state.todos.length ? this.state.todos[this.state.todos.length - 1].id + 1 : 0,
+            id: new Date().getTime(),
+            from: this.state.user.email,
             title: title,
             isDone: false
         }
@@ -50,6 +54,9 @@ export default class ToDos extends Component {
         this.setState({
             todos: newTodos
         })
+        // push to firebase
+        db.ref("todos").push(newTodo)
+
         this.popupHandler()
     }
 
@@ -59,13 +66,28 @@ export default class ToDos extends Component {
         })
     }
 
+    componentDidMount = () => {
+        try {
+            db.ref("todos").on("value", todo => {
+                let todos = [];
+                todo.forEach((snap) => {
+                    if (snap.val().from === this.state.user.email) {
+                        todos.push(snap.val());
+                    }
+                });
+                this.setState({ todos });
+            });
+        } catch (error) {
+            // error
+        }
+    }
 
     render() {
         return (
             <div className={classes.Todos}>
                 <h1>All Todo</h1>
-                <TodoList todos={this.state.todos} toggleTodoStatus={this.toggleTodoStatus} deleteTodo={this.deleteTodo} />
-                <AddTodoPopup popupStatus={this.state.popup} addTodo={this.addTodo} />
+                <TodoList todos={this.state.todos} toggleTodoStatus={this.toggleTodoStatus} deleteTodo={this.deleteTodo} user={this.state.user} />
+                <AddTodoPopup popupStatus={this.state.popup} addTodo={this.addTodo} user={this.state.user} />
                 <PlusButton clickHandler={this.popupHandler} />
                 <UserLogged user={this.state.user} />
             </div>
