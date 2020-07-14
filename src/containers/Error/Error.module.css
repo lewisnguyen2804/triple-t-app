@@ -1,0 +1,58 @@
+.errorPage{
+    width: 100%;
+    height: 100vh;
+
+    position: relative;
+}
+.errorSection{
+    width: 500px;
+    height: 200px;
+    padding-top: 50px;
+    border: 1px solid #ffffffb8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .5s ease-in-out;
+}
+
+.errorSection:hover{
+    background-color: #ccc;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(255,255,255,1);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(255,255,255,1);
+    box-shadow: 0px 0px 20px 0px rgba(255,255,255,1);
+}
+
+.errorSection:hover .errorContent{
+    color: #000;
+}
+
+.errorSection:hover .btnHome{
+    background-color: #000;
+}
+
+.errorSection:hover .btnHome a{
+    color: #fff;
+}
+
+.errorContent{
+    color: #ffffffb8;
+    text-align: center;
+}
+
+.btnHome{
+    width: 50%;
+    height: 40px;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border: none;
+    outline: none;
+    border-radius: 50px;
+}
+
+.btnHome a{
+    color: #000;
+}
