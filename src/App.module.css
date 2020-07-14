@@ -1,3 +1,4 @@
+@import "./index.css";
 
 .App {
   display: flex;
@@ -8,6 +9,7 @@
   height: 100vh;
   top: 0;
   left: 0; 
+  background-color: var(--background-dark);
 }
 
 /* Link style */

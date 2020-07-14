@@ -68,7 +68,7 @@ export default class SignIn extends Component {
   render() {
     return (
       <div className={classes.signIn_Form}>
-        <h1 className={classes.signIn}>Sign in</h1>
+        <h1 className={classes.signIn}>Sign In</h1>
         <form className={classes.info_Form} onSubmit={this.handleSubmit}>
           <label className={classes.emailName}>Your email:</label>
           <input

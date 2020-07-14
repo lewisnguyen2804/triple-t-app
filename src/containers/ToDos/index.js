@@ -5,7 +5,7 @@ import TodoList from "./TodoList"
 import AddTodoPopup from "./AddTodoPopup"
 import UserLogged from './UserLogged'
 import { auth } from "../../services/firebase"
-import Axios from 'axios'
+// import Axios from 'axios'
 import { db } from "../../services/firebase"
 
 export default class ToDos extends Component {
