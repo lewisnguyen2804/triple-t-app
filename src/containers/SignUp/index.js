@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import classes from "./signUp.module.css";
 
+import {
+    Link
+} from "react-router-dom";
+
 export default class SignUp extends Component {
     render() {
         return (
@@ -14,28 +18,28 @@ export default class SignUp extends Component {
                         <input type="email" placeholder="Your email" className={classes.inputBox} />
                         <input type="password" placeholder="Your password" className={classes.inputBox}/>
                         <div className={classes.agreeTerms}>
-                            <input type="checkbox" /> Agree to the <a href="#terms">Terms and Conditions</a>
+                            <input type="checkbox" /> Agree to the <Link to="#terms">Terms and Conditions</Link>
                         </div>
                         
                         <div className={classes.buttonArea}>
                             <button type="submit" className={classes.signUpButton}>Sign Up</button>
                             <div>
                                 Have an account? 
-                                <a href="/signin"> Login</a>
+                                <Link to="/signin"> Sign in</Link>
                             </div>
                         </div>
                     </form>
                     </div>
                     <div className={classes.socialLoginArea}>
-                        <a href="#facebook-login">
+                        <Link to="#facebook-login">
                             <img className={classes.socialIcon} alt="facebook-login-icon" src={require('../../assets/facebook.png')} />
-                        </a>
-                        <a href="#twitter-login">
+                        </Link>
+                        <Link to="#twitter-login">
                             <img className={classes.socialIcon} alt="twitter-login-icon" src={require('../../assets/twitter.png')} />
-                        </a>
-                        <a href="#youtube-login">
+                        </Link>
+                        <Link to="#youtube-login">
                             <img className={classes.socialIcon} alt="youtube-login-icon" src={require('../../assets/youtube.png')} />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
