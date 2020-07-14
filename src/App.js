@@ -45,7 +45,7 @@ class App extends Component {
   }
   
 	render() {
-    const loadingScreen = this.state.loading ? <div role="status"><span>Loading...</span></div> : null
+    const loadingScreen = this.state.loading ? <div className={classes.LoadingWrapper} role="status"><div className={classes.Loading}></div></div> : null
 	
 		return (
       <div className={classes.App}>
