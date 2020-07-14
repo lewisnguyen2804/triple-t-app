@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './components/FontawesomeIcons';
 import './App.css';
 import classes from './App.module.css';
@@ -7,45 +7,110 @@ import SignUp from "./containers/SignUp";
 import ToDos from "./containers/ToDos";
 import Error from "./containers/Error"
 
+import { auth } from "./services/firebase";
 
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect
 } from "react-router-dom";
 
-function App() {
-  return (
-    <div className={classes.App}>
-      <Router>
-        <Switch>
-          {/* anh Triết viết thiếu exact nha. Thêm exact để nó link page chính xác */}
-          
-          {/* <Route path="/signup"> 
-            <SignUp />
-          </Route>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/todos">
-            <ToDos/>
-          </Route>
-          <Route exact path="/">
-            <SignIn />
-          </Route> */}
+function PrivateRoute({ component: Component, authenticated, ...rest }) {
+	return (
+		<Route
+			{...rest}
+			render={props =>
+				authenticated === true ? (
+					<Component {...props} />
+				) : (
+						<Redirect
+							to={{ pathname: "/signin", state: { from: props.location } }}
+						/>
+					)
+			}
+		/>
+	);
+}
+
+
+function PublicRoute({ component: Component, authenticated, ...rest }) {
+	return (
+		<Route
+			{...rest}
+			render={props =>
+				authenticated === false ? (
+					<Component {...props} />
+				) : (
+						<Redirect to="/todos" />
+					)
+			}
+		/>
+	);
+}
+
+class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			authenticated: false,
+			loading: true
+		};
+	}
+
+	componentDidMount() {
+		auth().onAuthStateChanged(user => {
+			if (user) {
+				this.setState({
+					authenticated: true,
+					loading: false
+				});
+			} else {
+				this.setState({
+					authenticated: false,
+					loading: false
+				});
+			}
+		});
+	}
 
 
 
-          {/* Phần Trung edit */}
-          <Route exact path="/signup" component={SignUp} /> 
-          <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/todos" component={ToDos}/>
-          <Route exact path="/" component={SignIn} />
-          <Route component={Error} />
-        </Switch>
-      </Router>
-    </div>
-  );
+	render() {
+		return this.state.loading === true ? (
+			<div role="status">
+				<span>Loading...</span>
+			</div>
+		) : (
+			<Router>
+				<Switch>
+					<PublicRoute
+						exact
+						path="/"
+						authenticated={this.state.authenticated}
+						component={SignIn}
+					/>
+					<PrivateRoute
+						path="/todos"
+						authenticated={this.state.authenticated}
+						component={ToDos}
+					/>
+					<PublicRoute
+						path="/signup"
+						authenticated={this.state.authenticated}
+						component={SignUp}
+					/>
+					<PublicRoute
+						path="/signin"
+						authenticated={this.state.authenticated}
+						component={SignIn}
+					/>
+					<PublicRoute 
+						component={Error} />
+				</Switch>
+			</Router>
+		);
+	}
 }
 
 export default App;
