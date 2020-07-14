@@ -7,12 +7,14 @@ import {
 } from "react-router-dom";
 
 export default class SignUp extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             error: null,
             email: '',
             password: '',
+            show: false,
+            termsAgreeCheck: false
         };
     }
 
@@ -23,17 +25,32 @@ export default class SignUp extends Component {
     }
 
     handleSubmit = async (event) => {
+        this.setState({ show: false });
         event.preventDefault();
         this.setState({ error: '' });
-        try {
-            await signup(this.state.email, this.state.password);
-            console.log("Sign up successful!");
-        } catch (error) {
-            this.setState({ error: error.message });
-            console.log("Sign up failed!");
+        if (this.state.email === '' || this.state.password === '') {
+            this.setState({ error: 'Please fill the inputs' });
+            this.setState({ show: true });
+        }
+        else if (this.state.termsAgreeCheck) {
+            this.props.loaderHandler();
+            try {
+                await signup(this.state.email, this.state.password);
+            } catch (error) {
+                this.setState({ show: true });
+                this.setState({ error: error.message });
+            }
+        }
+        else {
+            this.setState({ error: 'Please agree to the Terms and Conditions' });
+            this.setState({ show: true });
         }
     }
 
+    onTermsAgreeChange = (e) => {
+        this.setState({ termsAgreeCheck: e.target.checked })
+    }
+    
     render() {
         return (
             <div className={classes.container}>
@@ -42,6 +59,11 @@ export default class SignUp extends Component {
                         <h1 className={classes.titleText}>
                             Sign Up
                         </h1>
+
+                        {this.state.show && <div className={classes.notificationArea}>
+                            {this.state.error}
+                        </div>}
+
                         <form onSubmit={this.handleSubmit}>
                             <input type="email" placeholder="Your email"
                                 onChange={this.handleChange}
@@ -52,7 +74,7 @@ export default class SignUp extends Component {
                                 name="password"
                                 className={classes.inputBox} />
                             <div className={classes.agreeTerms}>
-                                <input type="checkbox" /> Agree to the <Link to="#terms">Terms and Conditions</Link>
+                                <input type="checkbox" onChange={this.onTermsAgreeChange} /> Agree to the <Link to="#terms">Terms and Conditions</Link>
                             </div>
 
                             <div className={classes.buttonArea}>

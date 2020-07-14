@@ -9,45 +9,9 @@ import Error from "./containers/Error"
 
 import { auth } from "./services/firebase";
 
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Redirect
-} from "react-router-dom";
-
-function PrivateRoute({ component: Component, authenticated, ...rest }) {
-	return (
-		<Route
-			{...rest}
-			render={props =>
-				authenticated === true ? (
-					<Component {...props} />
-				) : (
-						<Redirect
-							to={{ pathname: "/signin", state: { from: props.location } }}
-						/>
-					)
-			}
-		/>
-	);
-}
-
-
-function PublicRoute({ component: Component, authenticated, ...rest }) {
-	return (
-		<Route
-			{...rest}
-			render={props =>
-				authenticated === false ? (
-					<Component {...props} />
-				) : (
-						<Redirect to="/todos" />
-					)
-			}
-		/>
-	);
-}
+import { Switch } from "react-router-dom";
+import { PublicRoute, PrivateRoute } from "./hoc";
+import { Route } from 'react-router-dom';
 
 class App extends Component {
 	constructor(props) {
@@ -55,7 +19,8 @@ class App extends Component {
 		this.state = {
 			authenticated: false,
 			loading: true
-		};
+    };
+    this.loaderHandler = this.loaderHandler.bind(this)
 	}
 
 	componentDidMount() {
@@ -74,43 +39,51 @@ class App extends Component {
 		});
 	}
 
-
-
+  loaderHandler() {
+    this.setState({
+      loading: true
+    })
+  }
+  
 	render() {
-		return this.state.loading === true ? (
-			<div role="status">
-				<span>Loading...</span>
-			</div>
-		) : (
-			<Router>
+    const loadingScreen = this.state.loading ? <div className={classes.LoadingWrapper} role="status"><div className={classes.Loading}></div></div> : null
+		return (
+			<div className={classes.App}>
+				{loadingScreen}
 				<Switch>
 					<PublicRoute
 						exact
 						path="/"
-						authenticated={this.state.authenticated}
+            authenticated={this.state.authenticated}
+            loaderHandler={this.loaderHandler}
 						component={SignIn}
 					/>
 					<PrivateRoute
+						exact
 						path="/todos"
 						authenticated={this.state.authenticated}
 						component={ToDos}
 					/>
 					<PublicRoute
+						exact
 						path="/signup"
 						authenticated={this.state.authenticated}
+            loaderHandler={this.loaderHandler}
 						component={SignUp}
 					/>
 					<PublicRoute
+						exact
 						path="/signin"
-						authenticated={this.state.authenticated}
+            authenticated={this.state.authenticated}
+            loaderHandler={this.loaderHandler}
 						component={SignIn}
 					/>
-					<PublicRoute 
+					<Route
 						component={Error} />
 				</Switch>
-			</Router>
-		);
-	}
+			</div>
+		)
+	};
 }
 
-export default App;
+export default App
