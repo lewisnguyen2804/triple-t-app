@@ -5,6 +5,7 @@ import classes from './App.module.css';
 import SignIn from "./containers/SignIn";
 import SignUp from "./containers/SignUp";
 import ToDos from "./containers/ToDos";
+import Error from "./containers/Error"
 
 
 import {
@@ -18,7 +19,9 @@ function App() {
     <div className={classes.App}>
       <Router>
         <Switch>
-          <Route path="/signup">
+          {/* anh Triết viết thiếu exact nha. Thêm exact để nó link page chính xác */}
+          
+          {/* <Route path="/signup"> 
             <SignUp />
           </Route>
           <Route path="/signin">
@@ -29,7 +32,16 @@ function App() {
           </Route>
           <Route exact path="/">
             <SignIn />
-          </Route>
+          </Route> */}
+
+
+
+          {/* Phần Trung edit */}
+          <Route exact path="/signup" component={SignUp} /> 
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/todos" component={ToDos}/>
+          <Route exact path="/" component={SignIn} />
+          <Route component={Error} />
         </Switch>
       </Router>
     </div>
