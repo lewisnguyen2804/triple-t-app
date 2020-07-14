@@ -45,12 +45,6 @@ class App extends Component {
       <div className={classes.App}>
         {loadingScreen}
 				<Switch>
-					<PublicRoute
-						exact
-						path="/"
-						authenticated={this.state.authenticated}
-						component={SignIn}
-					/>
 					<PrivateRoute
 						path="/todos"
 						authenticated={this.state.authenticated}
@@ -67,7 +61,14 @@ class App extends Component {
 						component={SignIn}
 					/>
 					<PublicRoute 
+						path="*"
 						component={Error} />
+					<PublicRoute
+						exact
+						path="/"
+						authenticated={this.state.authenticated}
+						component={SignIn}
+					/>
 				</Switch>
     </div>
     )
