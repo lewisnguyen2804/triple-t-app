@@ -3,12 +3,11 @@ import classes from "./UserLogged.module.css"
 import { logout } from "../../../helpers/auth"
 
 export default function UserLogged(props) {
+    const [userName] = props.user.email.includes("@") ? props.user.email.split("@"): props.user.email
     return (
-        <div>
-            <div className={classes.userArea}>
-            <p>Login in as: <strong>{props.user.email} </strong></p>
+        <div className={classes.userArea}>
+            <p>Wellcome <strong>{userName}</strong></p>
             <button className={classes.logOutButton} onClick={logout}>LOGOUT</button>
-                </div>
         </div>
     )
 }

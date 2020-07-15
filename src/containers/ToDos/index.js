@@ -85,11 +85,10 @@ export default class ToDos extends Component {
     render() {
         return (
             <div className={classes.Todos}>
-                <h1>All Todo</h1>
+                <UserLogged user={this.state.user} />
                 <TodoList todos={this.state.todos} toggleTodoStatus={this.toggleTodoStatus} deleteTodo={this.deleteTodo} user={this.state.user} />
                 <AddTodoPopup popupStatus={this.state.popup} addTodo={this.addTodo} user={this.state.user} />
                 <PlusButton clickHandler={this.popupHandler} />
-                <UserLogged user={this.state.user} />
             </div>
         )
     }

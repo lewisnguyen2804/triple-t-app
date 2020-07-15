@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import classes from "./signUp.module.css";
 import { signup } from "../../helpers/auth";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebookF,
-  faTwitter,
-  faGooglePlusG,
-} from "@fortawesome/free-brands-svg-icons"
-
 import {
     Link
 } from "react-router-dom";

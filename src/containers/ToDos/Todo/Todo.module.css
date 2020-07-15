@@ -1,16 +1,21 @@
+@import "../../../index.css";
+
 .Todo {
+    color: var(--primary-color);
     padding: 0 .5rem;
-    margin: 1rem ;
+    margin: .75rem 0 ;
+    padding: 0.5rem;
     border: none;
     border-radius: 5px;
-    box-shadow:3px 5px 5px 5px #d3d3d3;
+    box-shadow:var(--box-shadow);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: var(--secondary-color);
 }
 
 .Icon {
-    color: #76b7fb;
+    color: var(--primary-color);
 }
 
 .Hide {
@@ -18,5 +23,5 @@
 }
 
 .Delete {
-    color: #d3d3d3;
+    color: var(--warning-color);
 }
