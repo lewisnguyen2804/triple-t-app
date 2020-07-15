@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import classes from "./signUp.module.css";
 import { signup } from "../../helpers/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faTwitter,
+  faGooglePlusG,
+} from "@fortawesome/free-brands-svg-icons"
 
 import {
     Link
@@ -65,11 +71,13 @@ export default class SignUp extends Component {
                         </div>}
 
                         <form onSubmit={this.handleSubmit}>
-                            <input type="email" placeholder="Your email"
+                            <label className={classes.signUpLabel} for="email">Your email:</label>
+                            <input type="email" placeholder="Email..."
                                 onChange={this.handleChange}
                                 name="email"
                                 className={classes.inputBox} />
-                            <input type="password" placeholder="Your password"
+                            <label className={classes.signUpLabel} for="password">Your password:</label>
+                            <input type="password" placeholder="Password"
                                 onChange={this.handleChange}
                                 name="password"
                                 className={classes.inputBox} />
@@ -80,14 +88,14 @@ export default class SignUp extends Component {
                             <div className={classes.buttonArea}>
                                 <button type="submit"
                                     className={classes.signUpButton}>Sign Up</button>
-                                <div>
-                                    Have an account?
-                                    <Link to="/signin"> Sign in</Link>
-                                </div>
                             </div>
                         </form>
+                        <div className={classes.signInLink}>
+                            Have an account?
+                            <Link to="/signin"> Sign in</Link>
+                        </div>
                     </div>
-                    <div className={classes.socialLoginArea}>
+                    {/* <div className={classes.socialLoginArea}>
                         <Link to="#facebook-login">
                             <img className={classes.socialIcon} alt="facebook-login-icon" src={require('../../assets/facebook.png')} />
                         </Link>
@@ -97,7 +105,8 @@ export default class SignUp extends Component {
                         <Link to="#youtube-login">
                             <img className={classes.socialIcon} alt="youtube-login-icon" src={require('../../assets/youtube.png')} />
                         </Link>
-                    </div>
+                    </div> */}
+                
                 </div>
             </div>
         )
