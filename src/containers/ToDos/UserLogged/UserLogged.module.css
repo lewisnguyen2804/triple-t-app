@@ -1,18 +1,23 @@
+@import "../../../index.css";
 
 /* USER LOGIN AND LOGOUT */
 .userArea {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    /* flex-direction: column; */
+    justify-content: space-between;
     align-items: center;
+    color: var(--text-color);
 }
 .logOutButton {
+    display: inline-block;
     text-align: center;
     cursor: pointer;
-    color: white;
-    border-radius: 20px;
+    color: var(--text-color);
+    border-radius: 10px;
     border: none;
-    padding: 10px 40px;
-    background-image: linear-gradient(to right, #16b1ee , rgba(35, 159, 241, 0.747));
+    padding: 0.5rem 1rem;
+    background-image: var(--primary-linear);
     font-weight: bold;
     text-transform: uppercase;
 }

@@ -1,3 +1,5 @@
+@import "../../index.css";
+
 .buttonWrapper {
     height: 100px;
     width: 100px;
@@ -8,7 +10,7 @@
     padding: 2rem;
     border-radius: 100%;
     position: relative;
-    background-color: #76b7fb;
+    background-image: var(--primary-linear);
     display: flex;
     justify-content: center;
     align-items: center;

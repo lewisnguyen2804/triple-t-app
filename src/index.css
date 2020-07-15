@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+:root {
+  --primary-color: #006bb4;
+  --primary-linear: linear-gradient(to right, #41b5ee, #33a2e3, #2c8fd8, #2e7cca, #3568bb);
+  --secondary-color: #98a2b3;
+  --background-light: #25262E;
+  --background-dark: #1A1B20;
+  --warning-color: #bd271e;
+  --text-color: #dfe5ef;
+  --input-padding: .5rem;
+  --app-width: 400px;
+  --box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,7 +27,7 @@ code {
     monospace;
 }
 
-html {
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;

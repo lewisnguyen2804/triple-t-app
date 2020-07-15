@@ -5,7 +5,7 @@ import TodoList from "./TodoList"
 import AddTodoPopup from "./AddTodoPopup"
 import UserLogged from './UserLogged'
 import { auth } from "../../services/firebase"
-import Axios from 'axios'
+// import Axios from 'axios'
 import { db } from "../../services/firebase"
 
 export default class ToDos extends Component {
@@ -78,11 +78,10 @@ export default class ToDos extends Component {
     render() {
         return (
             <div className={classes.Todos}>
-                <h1>All Todo</h1>
+                <UserLogged user={this.state.user} />
                 <TodoList todos={this.state.todos} toggleTodoStatus={this.toggleTodoStatus} deleteTodo={this.deleteTodo} user={this.state.user} />
                 <AddTodoPopup popupStatus={this.state.popup} addTodo={this.addTodo} />
                 <PlusButton clickHandler={this.popupHandler} />
-                <UserLogged user={this.state.user} />
             </div>
         )
     }

@@ -5,6 +5,11 @@ import {faCheckCircle,faTimesCircle} from "@fortawesome/free-solid-svg-icons"
 
 export default function Todo(props) {
     const {title, isDone, deleteTodo, toggleTodoStatus, id} = props
+    const deleteTodoHandler = (id) => {
+        if (isDone) {
+            deleteTodo(id)
+        }
+    }
     return (
         <div className={classes.Todo}>
             <FontAwesomeIcon
@@ -15,7 +20,7 @@ export default function Todo(props) {
             <FontAwesomeIcon
              icon={faTimesCircle}
              className={classes.Icon, isDone ? classes.Delete : classes.Hide}
-             onClick={()=>deleteTodo(id)}/>
+             onClick={()=>deleteTodoHandler(id)}/>
         </div>
     )
 }

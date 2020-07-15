@@ -1,11 +1,14 @@
+@import "../../index.css";
+
 .Todos {
-    width: 500px;
-    height: 80vh;
-    background-color: #ffffff;
+    width: var(--app-width);
+    max-height: 80vh;
+    background-color: var(--background-light);
     padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     border-radius: 10px;
+    box-shadow: var(--box-shadow);
 }
