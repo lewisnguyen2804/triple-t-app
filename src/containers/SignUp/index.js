@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import classes from "./signUp.module.css";
 import { signup } from "../../helpers/auth";
 
-import {
-    Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class SignUp extends Component {
     constructor(props) {
@@ -37,8 +35,8 @@ export default class SignUp extends Component {
             try {
                 await signup(this.state.email, this.state.password);
             } catch (error) {
-                this.setState({ show: true });
                 this.setState({ error: error.message });
+                this.setState({ show: true });
             }
         }
         else {
@@ -50,7 +48,7 @@ export default class SignUp extends Component {
     onTermsAgreeChange = (e) => {
         this.setState({ termsAgreeCheck: e.target.checked })
     }
-    
+
     render() {
         return (
             <div className={classes.container}>

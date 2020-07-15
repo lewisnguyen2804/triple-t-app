@@ -19,8 +19,8 @@ class App extends Component {
 		this.state = {
 			authenticated: false,
 			loading: true
-    };
-    this.loaderHandler = this.loaderHandler.bind(this)
+		};
+		this.loaderHandler = this.loaderHandler.bind(this)
 	}
 
 	componentDidMount() {
@@ -39,14 +39,14 @@ class App extends Component {
 		});
 	}
 
-  loaderHandler() {
-    this.setState({
-      loading: true
-    })
-  }
-  
+	loaderHandler() {
+		this.setState({
+			loading: true
+		})
+	}
+
 	render() {
-    const loadingScreen = this.state.loading ? <div className={classes.LoadingWrapper} role="status"><div className={classes.Loading}></div></div> : null
+		const loadingScreen = this.state.loading ? <div className={classes.LoadingWrapper} role="status"><div className={classes.Loading}></div></div> : null
 		return (
 			<div className={classes.App}>
 				{loadingScreen}
@@ -54,8 +54,8 @@ class App extends Component {
 					<PublicRoute
 						exact
 						path="/"
-            authenticated={this.state.authenticated}
-            loaderHandler={this.loaderHandler}
+						authenticated={this.state.authenticated}
+						loaderHandler={this.loaderHandler}
 						component={SignIn}
 					/>
 					<PrivateRoute
@@ -68,14 +68,14 @@ class App extends Component {
 						exact
 						path="/signup"
 						authenticated={this.state.authenticated}
-            loaderHandler={this.loaderHandler}
+						loaderHandler={this.loaderHandler}
 						component={SignUp}
 					/>
 					<PublicRoute
 						exact
 						path="/signin"
-            authenticated={this.state.authenticated}
-            loaderHandler={this.loaderHandler}
+						authenticated={this.state.authenticated}
+						loaderHandler={this.loaderHandler}
 						component={SignIn}
 					/>
 					<Route

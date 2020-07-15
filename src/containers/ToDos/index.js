@@ -17,9 +17,7 @@ export default class ToDos extends Component {
         this.popupHandler = this.popupHandler.bind(this)
     }
     state = {
-        todos: [
-            { id: 0, title: "Test dodo", from: "a@gmail.com", isDone: false }
-        ],
+        todos: [],
         popup: false,
         user: auth().currentUser,
     }
@@ -28,13 +26,15 @@ export default class ToDos extends Component {
         // Find selected todo
         const selectedTodoIndex = this.state.todos.findIndex(todo => todo.id === selectedID)
         const newTodos = [...this.state.todos]
-        newTodos[selectedTodoIndex].isDone = !newTodos[selectedTodoIndex].isDone
 
+        // update on firebase
+        db.ref("todos/" + this.state.user.uid + '/' + selectedID).update({'isDone':  !newTodos[selectedTodoIndex].isDone});
+
+        newTodos[selectedTodoIndex].isDone = !newTodos[selectedTodoIndex].isDone
         this.setState({
             todos: newTodos
         })
-        // update on firebase
-        db.ref("todos/" + this.state.user.uid + '/' + selectedID).update({'isDone':  !newTodos[selectedTodoIndex].isDone});
+        
      }
 
     deleteTodo(selectedID) {
