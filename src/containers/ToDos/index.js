@@ -17,9 +17,7 @@ export default class ToDos extends Component {
         this.popupHandler = this.popupHandler.bind(this)
     }
     state = {
-        todos: [
-            { id: 0, title: "Test dodo", from: "a@gmail.com", isDone: false }
-        ],
+        todos: [],
         popup: false,
         user: auth().currentUser,
     }
@@ -28,16 +26,14 @@ export default class ToDos extends Component {
         // Find selected todo
         const selectedTodoIndex = this.state.todos.findIndex(todo => todo.id === selectedID)
         const newTodos = [...this.state.todos]
-        newTodos[selectedTodoIndex].isDone = !newTodos[selectedTodoIndex].isDone
 
-        this.setState({
-            todos: newTodos
-        })
-    }
+        // update on firebase
+        db.ref("todos/" + this.state.user.uid + '/' + selectedID).update({'isDone':  !newTodos[selectedTodoIndex].isDone});      
+     }
 
     deleteTodo(selectedID) {
-        const newTodos = [...this.state.todos]
-        this.setState({ todos: newTodos.filter(todo => todo.id !== selectedID) })
+        // dalete on firebase
+        db.ref("todos/" + this.state.user.uid).child(selectedID).remove();
     }
 
     addTodo(title) {
@@ -49,13 +45,10 @@ export default class ToDos extends Component {
             title: title,
             isDone: false
         }
-        const newTodos = [...this.state.todos]
-        newTodos.push(newTodo)
-        this.setState({
-            todos: newTodos
-        })
         // push to firebase
-        db.ref("todos").push(newTodo)
+        let newTodoFirebase = {};
+        newTodoFirebase[newTodo.id] = newTodo;
+        db.ref("todos/" + this.state.user.uid).update(newTodoFirebase);
 
         this.popupHandler()
     }
@@ -68,7 +61,7 @@ export default class ToDos extends Component {
 
     componentDidMount = () => {
         try {
-            db.ref("todos").on("value", todo => {
+            db.ref("todos/" + this.state.user.uid).on("value", todo => {
                 let todos = [];
                 todo.forEach((snap) => {
                     if (snap.val().from === this.state.user.email) {
@@ -87,7 +80,7 @@ export default class ToDos extends Component {
             <div className={classes.Todos}>
                 <UserLogged user={this.state.user} />
                 <TodoList todos={this.state.todos} toggleTodoStatus={this.toggleTodoStatus} deleteTodo={this.deleteTodo} user={this.state.user} />
-                <AddTodoPopup popupStatus={this.state.popup} addTodo={this.addTodo} user={this.state.user} />
+                <AddTodoPopup popupStatus={this.state.popup} addTodo={this.addTodo} />
                 <PlusButton clickHandler={this.popupHandler} />
             </div>
         )
