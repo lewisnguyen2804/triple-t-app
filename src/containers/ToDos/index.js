@@ -28,18 +28,10 @@ export default class ToDos extends Component {
         const newTodos = [...this.state.todos]
 
         // update on firebase
-        db.ref("todos/" + this.state.user.uid + '/' + selectedID).update({'isDone':  !newTodos[selectedTodoIndex].isDone});
-
-        newTodos[selectedTodoIndex].isDone = !newTodos[selectedTodoIndex].isDone
-        this.setState({
-            todos: newTodos
-        })
-        
+        db.ref("todos/" + this.state.user.uid + '/' + selectedID).update({'isDone':  !newTodos[selectedTodoIndex].isDone});      
      }
 
     deleteTodo(selectedID) {
-        const newTodos = [...this.state.todos]
-        this.setState({ todos: newTodos.filter(todo => todo.id !== selectedID) })
         // dalete on firebase
         db.ref("todos/" + this.state.user.uid).child(selectedID).remove();
     }
@@ -53,11 +45,6 @@ export default class ToDos extends Component {
             title: title,
             isDone: false
         }
-        const newTodos = [...this.state.todos]
-        newTodos.push(newTodo)
-        this.setState({
-            todos: newTodos
-        })
         // push to firebase
         let newTodoFirebase = {};
         newTodoFirebase[newTodo.id] = newTodo;
