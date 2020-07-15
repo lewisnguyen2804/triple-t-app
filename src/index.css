@@ -7,8 +7,10 @@
   --background-light: #25262E;
   --background-dark: #1A1B20;
   --warning-color: #bd271e;
-  --text-color: #d4dae5;
-  --input-padding: .5rem
+  --text-color: #dfe5ef;
+  --input-padding: .5rem;
+  --app-width: 400px;
+  --box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
 body {

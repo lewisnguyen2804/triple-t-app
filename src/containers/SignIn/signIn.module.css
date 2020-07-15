@@ -6,20 +6,21 @@
 }
 
 .signIn_Form{
-    width: 500px;
+    width: var(--app-width);
     max-height: 80vh;
     background-color: var(--background-light);
     margin: 1rem auto;
     padding: 1rem;
     border-radius: 10px;
     color: var(--text-color);
+    border: none;
 
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: var(--box-shadow);
 }
 
-.signIn{
+.signIn{    
     padding: 0.5rem 1rem;
     text-align: center;
 }
@@ -38,8 +39,8 @@
 .email_ID,.email_password{
     border: none;
     outline: none;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 20px;
+    border-bottom: 1px solid var(--secondary-color);
+    margin-bottom: 1rem;
     padding: 10px 10px 10px 0;
     transition: all .3s ease-out;
     border-radius: 5px;

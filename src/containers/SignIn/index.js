@@ -117,7 +117,7 @@ export default class SignIn extends Component {
           </div>
 
           <p className={classes.signUp}>
-            Have not an account? <Link to="/signup">SignUp</Link>
+            Don't have an account? <Link to="/signup">SignUp</Link>
           </p>
         </form>
       </div>
